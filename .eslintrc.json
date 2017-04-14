@@ -1,3 +1,4 @@
 {
-    "extends": "google"
+    "extends": "google",
+    "indent": ["error", 2]
 }

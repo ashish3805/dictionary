@@ -2,18 +2,31 @@
 <html>
 
 <head>
-<title>Dictionary</title>
-<link href="https://fonts.googleapis.com/css?family=Proza+Libre|Roboto" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Proza+Libre|Roboto" rel="stylesheet">
-<script src="node_modules/angular/angular.min.js"></script>
-<script src="./app.js"></script>
-<link rel="stylesheet" href="stylesheets/style.css">
+    <base href="/">
+    <title>Dictionary</title>
+    <link href="https://fonts.googleapis.com/css?family=Proza+Libre|Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Proza+Libre|Roboto" rel="stylesheet">
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="./app.js"></script>
+    <script src="/dictPage/dict.js"></script>
+    <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 
 <body ng-app="app" ng-controller="baseController">
     <div id="topContainer">
+        <div id="top" class="card">
+            <nav id="topNav">
+                <ul class="right">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/signIn">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
-    <div id="mainContainer">
+    <div ng-view></div>
     </div>
 </body>
+
 </html>
