@@ -11,5 +11,10 @@ app.config(['$routeProvider', '$locationProvider',
         controller: 'loginCtrl',
         controllerAs:'loginCtrl',
       })
+      .when('/SignUp',{
+        templateUrl:'signUp/signup.html',
+        controller:'signUpCtrl',
+        controllerAs:'signUpCtrl',
+      })
     $locationProvider.html5Mode(true);
 }]);
