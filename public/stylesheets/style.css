@@ -1,8 +1,126 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background: #eceff1;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#mainContainer {
+    max-width: 1366px;
+    max-height: 600px;
+    padding: 0 10px;
+}
+
+#topContainer {
+    margin-left: -9px;
+    margin-right: -9px;
+    margin-top: -9px;
+}
+
+#topNav {
+    padding: 0 50px
+}
+
+h1 h2 h3 h4 h5 h6 {
+    font-family: 'Proza Libre', sans-serif;
+}
+
+.card {
+    padding: 10px 10px;
+    background: #ffffff;
+    shape-image-threshold: 0.5;
+    box-shadow: 0px 0px 4px 1px #cfd8dc;
+    box-sizing: border-box;
+}
+
+.center {
+    margin: auto;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.textCenter {
+    text-align: center;
+    vertical-align: middle;
+}
+
+nav>ul>li {
+    display: inline-block;
+    padding: 2px 6px;
 }
 
 a {
-  color: #00B7FF;
+    text-decoration: none;
+    font-family: 'Proza Libre', sans-serif;
+    color: white;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.right {
+    text-align: right;
+}
+
+input {
+    width: 100%;
+    min-height: 40px;
+    padding: 8px;
+    border: 2px solid #F3E5F5;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    font: inherit;
+    background: #FFFFFF;
+}
+
+input:active {
+    border: 2px solid #AB47BC;
+}
+
+button {
+    padding: 10px 15px;
+    background: #2962FF;
+    text-decoration: none;
+    min-height: 40px;
+    border: none;
+    font: inherit;
+    color: white;
+}
+
+.container {
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+#searchBox {
+    padding-bottom: 100px;
+    padding-top: 100px;
+    padding-left: 80px;
+    padding-right: 80px;
+    width: 100%;
+}
+
+#top {
+    margin-bottom: 10px;
+    background: #3f51b5;
+}
+
+#word {
+    min-height: 55px;
+    font-size: 38px;
+}
+
+
+/* cards for word description */
+
+.wordDesc {
+    display: inline-block;
+}
+
+.word {
+    display: inline-block;
+    padding: 2px 6px;
+    overflow: visible;
+    min-height: 200px;
+    max-width: 300px;
 }
