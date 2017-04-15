@@ -7,7 +7,7 @@ body {
 #mainContainer {
     max-width: 1366px;
     max-height: 600px;
-    padding: 0 10px;
+    padding: 10px;
 }
 
 #topContainer {

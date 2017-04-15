@@ -7,11 +7,11 @@ app.config(['$routeProvider', '$locationProvider',
         controllerAs: 'dictCtrl',
       })
       .when('/signIn',{
-        templateUrl:'login/login.html',
-        controller: 'loginCtrl',
-        controllerAs:'loginCtrl',
+        templateUrl:'signIn/signIn.html',
+        controller: 'signInCtrl',
+        controllerAs:'signInCtrl',
       })
-      .when('/SignUp',{
+      .when('/signup',{
         templateUrl:'signUp/signup.html',
         controller:'signUpCtrl',
         controllerAs:'signUpCtrl',
