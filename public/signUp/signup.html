@@ -1,17 +1,20 @@
-<div id="signUp" class="box">
-    <form action="Data" method="post">
+<div id="signUp" class="card">
 
-        <label><b>First Name</b></label>
-        <input placeholder="First Name" type="text" name="Enter First Name" required=""> <br>
+    <div class="textCenter">
+        <form id="searchForm" action="Data" method="post">
+            <header>
+                <h1>Sign Up</h1>
+            </header>
 
-        <label><b>Last Name</b></label>
-        <input placeholder="Last Name" type="text" name="Enter Last Name" required=""><br>
+            <input type="text" name="Full Name" placeholder="Enter full name">
+            <input type="email" name="Email" placeholder="Enter E-mail" required="E-mail required ">
+            <input type="email" name="Email" placeholder="Re-Enter E-mail" required="E-mail required ">
+            <input type="password" name="password" placeholder="Enter password" required="Password required">
+            <input type="password" name="password" placeholder="Re-Enter password" required="Password required">
+            <input type="date" data-date-inline-picker="true">
+            <button type="submit" value="submit">Register</button>
+        
+        </form>
+    </div>
 
-        <label><b>Email</b></label>
-        <input placeholder="Email" type="email" name="Enter E-mail" required=""><br>
-
-        <label><b>Password</b></label>
-        <input placeholder="Password" type="password" name="Enter Password" required=""><br>
-        <button type="submit">Submit</button>
-    </form>
 </div>
