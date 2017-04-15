@@ -1,0 +1,19 @@
+<div id="signUp" class="card">
+
+    <div class="textCenter">
+        <form ng-submit="signUp()">
+            <header>
+                <h1>Sign Up</h1>
+            </header>
+
+            <input type="text" name="Full Name" placeholder="Enter full name" ng-model="name">
+            <input type="email" name="Email" placeholder="Enter E-mail" required="E-mail required " ng-model="email">
+            <input type="password" name="password" placeholder="Enter password" required="Password required" ng-model="password">
+            <input type="password" name="password" placeholder="Re-Enter password" required="Password required" ng-model="repassword">
+            <input type="date" data-date-inline-picker="true" placeholder="Date of birth" ng-model="dob">
+            <button type="submit" value="submit">Register</button>
+        
+        </form>
+    </div>
+
+</div>

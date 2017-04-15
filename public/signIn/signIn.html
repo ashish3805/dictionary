@@ -1,20 +1,20 @@
 <div id="logIn" class="card">	
 
 		<div class="textCenter">
-			<form id="searchForm" autocomplete="on" method="post">
+			<form id="searchForm" autocomplete="on" ng-submit="signIn()">
 				<header>
 					<h1>Sign In</h1>
 				</header>
 				
-				<input type="email" name="Email" placeholder="Enter E-mail" required="E-mail required " class="medium block">
-				<input type="password" name="password" placeholder="Enter password" required="Password required" class="medium block">
+				<input type="email" name="Email" placeholder="Enter E-mail" required="E-mail required " class="medium block" ng-model="email">
+				<input type="password" name="password" placeholder="Enter password" required="Password required" class="medium block" ng-model="password">
 				
 				<button type="submit" value="submit">Log In</button>
 				<a href="" style="color:crimson">Forgot Password?</a>
 
 				<header>
 					<h4>Need New Account?
-						<a href="signup" style="color:forestgreen">SignUp</a>
+						<a ui-sref="signUp" style="color:forestgreen">SignUp</a>
 					</h4>
 				</header>
 			</form>

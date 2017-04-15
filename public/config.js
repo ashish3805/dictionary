@@ -1,20 +1,20 @@
-app.config(['$routeProvider', '$locationProvider',
-  function($routeProvider, $locationProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: '/dictPage/dict.html',
-        controller: 'dictCtrl',
-        controllerAs: 'dictCtrl',
-      })
-      .when('/signIn',{
-        templateUrl:'signIn/signIn.html',
-        controller: 'signInCtrl',
-        controllerAs:'signInCtrl',
-      })
-      .when('/signup',{
-        templateUrl:'signUp/signup.html',
-        controller:'signUpCtrl',
-        controllerAs:'signUpCtrl',
-      })
-    $locationProvider.html5Mode(true);
+app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider, $urlRouterProvider, $httpProvider) {
+  $stateProvider
+    .state('signIn', {
+      url: '/signIn',
+      templateUrl: 'signIn/signIn.html',
+      controller: 'signInCtrl',
+    })
+    .state('home', {
+      templateUrl: '/dictPage/dict.html',
+      controller: 'dictCtrl',
+      url: '/home',
+    })
+    .state('signUp', {
+      templateUrl: 'signUp/signUp.html',
+      controller: 'signUpCtrl',
+      url: '/signUp',
+    });
+  $urlRouterProvider.otherwise('home');
+  $httpProvider.interceptors.push('authInterceptor');
 }]);

@@ -4,7 +4,6 @@ let Dictionary = require('../services/dictService');
 
 dict.get('/', function(req, res, err) {
     let word = req.query.word;
-    console.log('word: ', word);
     let meaning = Dictionary.getMeaning(word,function(messageObj){
         res.json(messageObj);
     });
@@ -12,7 +11,6 @@ dict.get('/', function(req, res, err) {
 
 dict.get('/isEmpty', function(req, res, err) {
     let word = req.query.word;
-    console.log('word: ', word);
     let meaning = Dictionary.getMeaning(word,function(messageObj){
         res.json(messageObj);
     });
@@ -20,7 +18,6 @@ dict.get('/isEmpty', function(req, res, err) {
 
 dict.get('/', function(req, res, err) {
     let word = req.query.word;
-    console.log('word: ', word);
     let meaning = Dictionary.getMeaning(word,function(messageObj){
         res.json(messageObj);
     });

@@ -1,7 +1,8 @@
 <div id="mainContent">
     <div id="searchBox" class="card textCenter">
-        <form id="searchForm">
-            <input type="text" placeholder="Your word!" id="word">
+        <form id="searchForm" ng-submit="searchWord()">
+            <input type="text" placeholder="Your word!" id="word"
+                ng-model="word">
             <button type="submit" value="submit">Submit</button>
         </form>
     </div>
