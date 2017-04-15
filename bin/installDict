@@ -18,7 +18,7 @@ var installDict = function (dictPath) {
     var modelWords = [];
     for (word in words) {
         var newWord = new Word();
-        newWord.name = word.toUpperCase;
+        newWord.name = word.toUpperCase();
         newWord.meaning = words[word];
         modelWords.push(newWord);
     };

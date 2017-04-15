@@ -3,20 +3,8 @@ var mongoose = require('mongoose');
 
 var dictService = {};
 
-dictService.getMeaning = function(word,callback){
-     Word.findOne({ name: word }, function (err, existingWord) {
-        if (err) {
-            callback({ status: false, message: err });
-        } else if (existingWord) {
-            callback({ status: true, message: existingWord.meaning });
-        } else {
-            callback({ status: false, message: "word not found" });
-        }
-    });
-}
-
-dictService.getWord = function (word, callback) {
-    Word.findOne({ _id: word.id }, function (err, existingWord) {
+dictService.getWord = function(word,callback){
+     Word.findOne({ name: word.toUpperCase() }, function (err, existingWord) {
         if (err) {
             callback({ status: false, message: err });
         } else if (existingWord) {
@@ -25,7 +13,7 @@ dictService.getWord = function (word, callback) {
             callback({ status: false, message: "word not found" });
         }
     });
-};
+}
 
 dictService.getAllWords = function (word, callback) {
     Word.find({}, function (err, existingWords) {
