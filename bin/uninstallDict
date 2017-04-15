@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+let mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/test');
+let db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection-error: '));
+db.once('open', function () {
+    console.log('Info: Connected to database.');
+});
+
+let Word = require('../models/Word');
+
+Word.remove({}, function (err, result) {
+    if (err) {
+        console.log("Error : ", err);
+    } else {
+        console.log("Info: dropped all words.");
+    }
+    mongoose.connection.close();
+})

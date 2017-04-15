@@ -1,6 +1,7 @@
 let User = require('../models/User');
 var constants = require('./constService');
 var jwt = require('jsonwebtoken');
+var mongoose = require('mongoose');
 
 var userService = {};
 userService.createNew = function (user, callback) {
@@ -42,10 +43,48 @@ userService.signIn = function (user, callback) {
         }
         else {
             var token = jwt.sign({ id: existingUser._id }, constants.APP_SECRET,
-            { expiresIn: '2 days' });
+                { expiresIn: '2 days' });
             callback({ status: true, message: user, token: token });
         }
     });
 }
+
+userService.getCount = function (callback) {
+    mongoose.connection.db.collection('users').count(function (err, count) {
+        console.dir(err);
+        console.dir(count);
+        if (count == 0) {
+            callback({ status: true, message: "No Found Records." });
+        }
+        else {
+            callback({ status: true, message: count });
+            console.log("Found Records : " + count);
+        }
+    });
+}
+
+userService.getAll = function(callback){
+    User.find({},function(err, existingUsers){
+        if(err){
+            callback({ status: false, message: err });
+        }else if(!existingUsers){
+            callback({ status: false, message: "no users." });
+        }else{
+            callback({ status: true, message: existingUsers});
+        }   
+    });
+};
+
+userService.removeAll = function(callback){
+    User.remove({},function(err, existingUsers){
+        if(err){
+            callback({ status: false, message: err });
+        }else if(!existingUsers){
+            callback({ status: false, message: "no users." });
+        }else{
+            callback({ status: true, message: existingUsers});
+        }   
+    });
+};
 
 module.exports = userService;

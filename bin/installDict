@@ -1,0 +1,47 @@
+#!/usr/bin/env node
+
+let fs = require('fs');
+let path = require('path');
+let Word = require('../models/Word');
+
+var installDict = function (dictPath) {
+    var mongoose = require('mongoose');
+    mongoose.connect('mongodb://localhost/test');
+    var db = mongoose.connection;
+    db.on('error', console.error.bind(console, 'connection-error: '));
+    db.once('open', function () {
+        console.log("Info: Connected to database.");
+    });
+
+    let words = JSON.parse(fs.readFileSync(dictPath));
+    console.log('Info: ' + 'Done parsing dictionary.');
+    var modelWords = [];
+    for (word in words) {
+        var newWord = new Word();
+        newWord.name = word.toUpperCase;
+        newWord.meaning = words[word];
+        modelWords.push(newWord);
+    };
+    console.log('Info:', modelWords.length, ' words to be added.')
+    Word.collection.insert(modelWords, function (err, words) {
+        if (err) {
+            console.log("Error: Installation Error , ", err);
+        } else {
+            console.log('Info: ' + 'Done installing dictionary.');
+            mongoose.connection.close();
+        }
+    });
+}
+
+var args = process.argv;
+var i;
+var dataPath;
+if (args.length > 1) {
+    dataPath = path.join(__dirname, path.normalize('./dictionary.json'));
+    installDict(dataPath);
+} else {
+    for (i = 2; i < args.length; i++) {
+        dataPath = path.normalize(args[i]);
+        installDict(dataPath);
+    }
+}

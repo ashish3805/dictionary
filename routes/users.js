@@ -19,4 +19,22 @@ router.post('/signup', function (req, res, next) {
   });
 });
 
+router.get('/count', function (req, res, next) {
+  User.getCount(function(messageObj){
+    res.json(messageObj);
+  });
+});
+
+router.get('/all', function (req, res, next) {
+  User.getAll(function(messageObj){
+    res.json(messageObj);
+  });
+});
+
+router.get('/removeall', function (req, res, next) {
+  User.removeAll(function(messageObj){
+    res.json(messageObj);
+  });
+});
+
 module.exports = router;

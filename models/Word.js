@@ -1,6 +1,6 @@
+let mongoose = require('mongoose');
+let Schema = mongoose.Schema;
 
-let bcrypt = require('bcrypt-nodejs');
-let Schema = require('mongoose').Schema;
 let wordSchema = new Schema({
     name: String,
     meaning: String
