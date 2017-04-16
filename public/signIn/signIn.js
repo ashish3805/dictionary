@@ -9,7 +9,8 @@ app.controller('signInCtrl', ['$scope', '$window', '$state', 'signInSrv',
             }).then(
                 function (res) {
                     if (res.data.status) {
-                        $window.localStorage['dictUser'] = angular.toJson(res.data.message);
+                        $window.localStorage['dictUser'] = JSON
+                            .stringify(res.data.message);
                         console.log(res.data.message);
                         $state.go('home');
                     }

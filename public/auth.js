@@ -1,4 +1,6 @@
-app.service('authSrv', ['$window', function ($window) {
+var auth = angular.module('auth',[]);
+
+auth.service('authSrv', ['$window', function ($window) {
     let self = this;
     self.parseJwt = function (token) {
         let base64Url = token.split('.')[1];
@@ -25,7 +27,7 @@ app.service('authSrv', ['$window', function ($window) {
     };
 }]);
 
-app.factory('authInterceptor', ['$injector', function ($injector) {
+auth.factory('authInterceptor', ['$injector', function ($injector) {
     return {
         // automatically attach Authorization header
         request: function (config) {
