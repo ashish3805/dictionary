@@ -29,7 +29,7 @@
                     <li ng-show="isAuthed()" class="dropdown"><a ui-sref="home">{{user.name}}</a>
                         <ul class="dropdown-content">
                             <li><a href="#">Account</a></li>
-                            <li><a href="#">Sign Out</a></li>
+                            <li ng-click="signOut()"><a>Sign Out</a></li>
                         </ul>
                     </li>
                 </ul>
