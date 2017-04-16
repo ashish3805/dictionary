@@ -1,22 +1,51 @@
-<div id="logIn" class="card">	
+<div id="logIn" class="card">
+	<div class="textCenter">
+		<form id="signInForm" autocomplete="on" ng-submit="signIn(signInForm.$valid)" name="signInForm" novalidate>
 
-		<div class="textCenter">
-			<form id="searchForm" autocomplete="on" ng-submit="signIn()">
-				<header>
-					<h1>Sign In</h1>
-				</header>
-				
-				<input type="email" name="Email" placeholder="Enter E-mail" required="E-mail required " class="medium block" ng-model="email">
-				<input type="password" name="password" placeholder="Enter password" required="Password required" class="medium block" ng-model="password">
-				
-				<button type="submit" value="submit">Log In</button>
-				<a href="" style="color:crimson">Forgot Password?</a>
+			<header>
+				<h1>Sign In</h1>
+				<div class="has-error">
+					<p ng-show="signInForm.submitted && signInForm.checked  &&
+					 signInForm.hasError" style="color: red">
+						{{signInForm.error}}</p>
+				</div>
+			</header>
 
-				<header>
-					<h4>Need New Account?
-						<a ui-sref="signUp" style="color:forestgreen">SignUp</a>
-					</h4>
-				</header>
-			</form>
-		</div>
+			<div ng-class="{ 'has-error' : signInForm.email.$invalid &&
+			signInForm.email.$touched && !signInForm.email.$pristine }">
+
+				<input type="email" name="email" placeholder="Enter E-mail" class="medium block" ng-model="email" ng-minlength="1" required>
+
+				<p ng-show="signInForm.email.$invalid && signInForm.email.$touched  && !signInForm.email.$pristine" class="help-block">
+					Enter a valid Email.
+				</p>
+
+	</div>
+
+	<div ng-class="{ 'has-error' : signInForm.password.$invalid && 
+			!signInForm.password.$pristine && 
+			signInForm.password.$touched }">
+
+		<input type="password" name="password" placeholder="Enter password" required="Password required" class="medium block" ng-model="password">
+
+		<p ng-show="signInForm.password.$invalid &&
+				 !signInForm.password.$pristine  &&
+				  signInForm.password.$touched" class="help-block">
+			Your password is required.</p>
+
+</div>
+
+<button type="submit" value="submit">Log In</button>
+
+<a href="" style="color:crimson">Forgot Password?</a>
+
+<header>
+	<h4>Need New Account?
+		<a ui-sref="signUp" style="color:forestgreen">SignUp</a>
+	</h4>
+</header>
+
+</form>
+
+</div>
 </div>

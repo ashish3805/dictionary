@@ -1,18 +1,39 @@
 <div id="signUp" class="card">
 
     <div class="textCenter">
-        <form ng-submit="signUp()">
+        <form ng-submit="signUp(signUpForm.$valid)" id="signUpForm" name="signUpForm" novalidate>
             <header>
                 <h1>Sign Up</h1>
             </header>
 
-            <input type="text" name="Full Name" placeholder="Enter full name" ng-model="name">
-            <input type="email" name="Email" placeholder="Enter E-mail" required="E-mail required " ng-model="email">
-            <input type="password" name="password" placeholder="Enter password" required="Password required" ng-model="password">
-            <input type="password" name="password" placeholder="Re-Enter password" required="Password required" ng-model="repassword">
-            <input type="date" data-date-inline-picker="true" placeholder="Date of birth" ng-model="dob">
+            <div class="has-error">
+                <p ng-show="form.submitted && form.checked  && form.hasError" style="color: red">{{form.error}}</p>
+            </div>
+
+
+            <div ng-class="{ 'has-error' : signUpForm.name.$invalid && signUpForm.name.$touched && !signUpForm.name.$pristine }">
+                <input type="text" name="name" placeholder="Enter full name" ng-model="name" ng-minlength="1" required>
+                <p ng-show="signUpForm.name.$invalid && signUpForm.name.$touched  && !signUpForm.name.$pristine" class="help-block">Your Name is required.</p>
+            </div>
+
+
+            <div ng-class="{ 'has-error' : signUpForm.email.$invalid && signUpForm.email.$touched && !signUpForm.email.$pristine }">
+                <input type="email" name="email" placeholder="Enter E-mail" ng-model="email" minlength="1" required>
+                <p ng-show="signUpForm.email.$invalid && signUpForm.email.$touched  && !signUpForm.email.$pristine" class="help-block">Please enter a valid email.</p>
+            </div>
+
+            <div ng-class="{ 'has-error' : signUpForm.password.$invalid && signUpForm.password.$touched && !signUpForm.password.$pristine }">
+                <input type="password" name="password" placeholder="Enter password" ng-model="password" minlength="1" required>
+                <p ng-show="signUpForm.password.$invalid && signUpForm.password.$touched  && !signUpForm.password.$pristine" class="help-block">Your password is required.</p>
+            </div>
+
+            <div ng-class="{ 'has-error' : !signUpForm.password.$pristine &&signUpForm.repassword.$touched  && !doPasswordsMatch() }">
+                <input type="password" name="repassword" placeholder="Re-Enter password" ng-model="repassword">
+                <p ng-show="!signUpForm.password.$pristine &&signUpForm.repassword.$touched  && !doPasswordsMatch()" class="help-block">Passwords do not match.</p>
+            </div>
+
             <button type="submit" value="submit">Register</button>
-        
+
         </form>
     </div>
 

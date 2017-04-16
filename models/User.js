@@ -6,7 +6,6 @@ let userSchema = new Schema({
     name: String,
     email: String,
     password: String,
-    email: String,
     words: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Word',
