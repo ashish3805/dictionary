@@ -15,6 +15,18 @@ dictService.getWord = function(word,callback){
     });
 }
 
+dictService.getWordById = function(word,callback){
+     Word.findOne({ _id: word }, function (err, existingWord) {
+        if (err) {
+            callback({ status: false, message: err });
+        } else if (existingWord) {
+            callback({ status: true, message: existingWord });
+        } else {
+            callback({ status: false, message: "word not found" });
+        }
+    });
+}
+
 dictService.getAllWords = function (word, callback) {
     Word.find({}, function (err, existingWords) {
         if (err) {

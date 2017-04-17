@@ -1,0 +1,38 @@
+<div id="profile" class="card">
+    <table ng-show="!errorStatus">
+        <tbody>
+            <tr>
+                <td>Name:</td>
+                <td ng-hide="flags.edit">{{profile.name}}</td>
+                <td><input type="name" name="name" ng-model="profile.name" ng-show="flags.edit"></td>
+            </tr>
+            <tr>
+                <td>Email id:</td>
+                <td ng-hide="flags.edit">{{profile.email}}</td>
+                <td><input type="email" name="email" ng-model="profile.email" ng-show="flags.edit"></td>
+            </tr>
+            <tr>
+                <td><a ui-sref=".editPass" ng-show='flags.edit'>Edit Password</a></td>
+                <td>
+                    <ui-view></ui-view>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button class="btn btn-warning" ng-click="enableEdit()" ng-hide="flags.edit" style="background: #4CAF50;">Edit Profile</button>
+    <button class="btn btn-success" ng-click="saveProfile()" ng-show="flags.edit">Save Profile</button>
+    <button class="btn btn-warning" ng-click="cancelEdit()" ng-show="flags.edit" style="background: #f44336;">Cancel</button>
+
+</div>
+
+<div id="my words" ng-controller="userWordsCtrl">
+    <div class="wordDesc card" ng-repeat="word in words" style="width: 300px; margin: 10px;">
+        <div id="starBox" class ="checked">
+            <span style="font-size: 24px;" id="star" ng-click="removeWord(word)">★</span>
+        </div>
+        <div class="desc">
+            <b>{{word.name}}</b> : <i>/ˈap(ə)l/</i> {{word.meaning}}
+        </div>
+    </div>
+</div>

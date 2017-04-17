@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var Word = require('../models/Word');
 
 function isInArray(value, array) {
-  return array.indexOf(value) > -1;
+    return array.indexOf(value) > -1;
 }
 
 var userService = {};
@@ -35,6 +35,37 @@ userService.createNew = function (user, callback) {
         }
     });
 };
+
+userService.update = function (user, newUser, callback) {
+
+    User.findOne({ 'email': newUser.email.toLowerCase() }, function (err,
+        existingUser) {
+        if (err) {
+            callback({ status: false, message: err });
+            return;
+        } else if (existingUser) {
+            console.log(existingUser._id,user._id);
+            if (!existingUser._id.equals(user._id)) {
+                callback({ status: false, message: "Account with this email already exists." });
+                return;
+            }
+        }
+
+        User.findByIdAndUpdate(user._id, {
+            "$set": {
+                "name": newUser.name,
+                "email": newUser.email.toLowerCase()
+            }
+        }, { new: true }, function (err, updatedUser) {
+            if (err) {
+                callback({ status: false, message: err });
+            }
+            else {
+                callback({ status: "true", message: updatedUser })
+            }
+        });
+    });
+}
 
 userService.signIn = function (user, callback) {
     return User.findOne({ 'email': user.email.toLowerCase() },
@@ -95,7 +126,7 @@ userService.removeAll = function (callback) {
 };
 
 userService.checkWord = function (user, wordId, callback) {
-    if (isInArray(wordId,user.words)) {
+    if (isInArray(wordId, user.words)) {
         callback({ status: false, message: user });
         return;
     }
@@ -109,11 +140,12 @@ userService.checkWord = function (user, wordId, callback) {
 }
 
 userService.unCheckWord = function (user, wordId, callback) {
-    if (!isInArray(wordId,user.words)) {
+    console.log(user.words);
+    if (!isInArray(wordId, user.words)) {
         callback({ status: false, message: user });
-        return ;
+        return;
     }
-    User.findByIdAndUpdate(user._id, { $pop: { "words": wordId } }, { new: true }, function (err, existingUser) {
+    User.findByIdAndUpdate(user._id, { $pullAll: { "words": [wordId] } }, { new: true }, function (err, existingUser) {
         if (err) {
             callback({ status: false, message: err });
         } else {

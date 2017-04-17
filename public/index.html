@@ -10,6 +10,8 @@
     <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="./auth.js"></script>
     <script src="./user/user.js"></script>
+    <script src="./user/profile.js"></script>
+    <script src="./user/userWords.js"></script>
     <script src="./app.js"></script>
     <script src="./config.js"></script>
     <script src="/dictPage/dict.js"></script>
@@ -28,7 +30,7 @@
                     <li ng-hide="isAuthed()"><a ui-sref=".signIn">Sign In </a></li>
                     <li ng-show="isAuthed()" class="dropdown"><a ui-sref="home">{{user.name}}<span style="color: white;"> ▾ </span></a>
                         <ul class="dropdown-content">
-                            <li><a href="#">Account</a></li>
+                            <li><a ui-sref="account">Account</a></li>
                             <li ng-click="signOut()"><a>Sign Out</a></li>
                         </ul>
                     </li>

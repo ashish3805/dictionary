@@ -20,6 +20,13 @@ router.post('/signup', function (req, res, next) {
   });
 });
 
+router.put('/update', auth.authenticate('user', { session: false }), function (req, res, next) {
+  let user = req.body;
+  User.update(req.user,user, function (data) {
+    res.send(data);
+  });
+});
+
 router.get('/count', function (req, res, next) {
   User.getCount(function (messageObj) {
     res.json(messageObj);

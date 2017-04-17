@@ -85,6 +85,7 @@ button {
     border: none;
     font: inherit;
     color: white;
+    cursor: pointer;
 }
 
 .container {
@@ -206,6 +207,6 @@ button {
 .unchecked :hover{
     color: #f44336;
 }
-#desc{
+.desc{
     padding: 0px 20px 20px 20px;
 }

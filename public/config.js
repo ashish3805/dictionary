@@ -14,6 +14,11 @@ app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($s
       templateUrl: 'signUp/signUp.html',
       controller: 'signUpCtrl',
       url: '/signUp',
+    })
+    .state('account', {
+      templateUrl: '/user/user.html',
+      controller: 'profileCtrl',
+      url: '/account',
     });
   $urlRouterProvider.otherwise('home');
   $httpProvider.interceptors.push('authInterceptor');

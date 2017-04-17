@@ -15,9 +15,9 @@ user.service('userSrv', ['authSrv', '$http', '$window', function (
     let isWordChecked = function (wordId) {
         if (isUserAuthed) {
             var userJSON = getUser()
-            if(userJSON){
+            if (userJSON) {
                 return userJSON.words.includes(wordId);
-            }else{
+            } else {
                 return false;
             }
         }
@@ -54,6 +54,16 @@ user.service('userSrv', ['authSrv', '$http', '$window', function (
         },
         unCheckWord: function (wordId) {
             return $http.put('/users/uncheckword?word_id=' + wordId);
+        },
+        saveProfile: function (userData) {
+            console.log('saving user:', userData);
+            return $http.put('/users/update', userData);
+        },
+        getWordList: function () {
+            return getUser().words;
+        },
+        getWordById: function (word) {
+            return $http.get('/dict/byid/?word=' + word);
         }
     };
 }]);
