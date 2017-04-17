@@ -1,17 +1,25 @@
 <div id="mainContent">
     <div id="searchBox" class="card textCenter">
         <form id="searchForm" ng-submit="searchWord()">
-            <input type="text" placeholder="Your word!" id="word" ng-model="word">
+            <input type="text" placeholder="Your word!" id="word" ng-model="searchBoxWord">
             <button type="submit" value="submit">Submit</button>
         </form>
     </div>
-    <div id="descContainer" class="container" ng-show="current.status && current.meaning">
-        <div class="wordDesc card">
-            <b>{{current.word}}</b> : <i>/ˈap(ə)l/</i>
-            {{current.meaning}}
+    <div id="descContainer" class="container ">
+
+        <div id="oops" class="card" ng-hide="current.status">
+            <h3>Sorry!! We don't have that word in our dictionary.<br><span style="font-size: 40px; color: #F44336;">☹</span></h3>
         </div>
-    </div>
-    <div id="oops" class="card" ng-hide="current.status">
-        <h3>Sorry We don't have that word in our dictionary!!</h3>
+
+        <div ng-show="current.status && current.meaning">
+            <div class="wordDesc card">
+                <div id="starBox" ng-class="{'checked' : isWordChecked(), 'unchecked' : !isWordChecked()}" ng-show="isAuthed()">
+                    <span style="font-size: 24px;" id="star" ng-click="toggleStar()"></span>
+                </div>
+                <div id="desc">
+                    <b>{{current.word}}</b> : <i>/ˈap(ə)l/</i> {{current.meaning}}
+                </div>
+            </div>
+        </div>
     </div>
 </div>

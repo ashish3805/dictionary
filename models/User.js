@@ -20,16 +20,8 @@ userSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
 };
 
-userSchema.methods.addWord = function(userWord) {
-    let word = new Word(userWord);
-    return word.save(function(err, word) {
-        if (err) {
-
-        } else {
-            this.words.push(word._id);
-        }
-    });
-    return word;
+userSchema.methods.isInWords = function(wordId) {
+    return this.words.includes(wordId);
 };
 
 let User = mongoose.model('User', userSchema);

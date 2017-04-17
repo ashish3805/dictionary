@@ -25,8 +25,8 @@
             <nav id="topNav">
                 <ul class="right">
                     <li><a ui-sref=".home">Home</a></li>
-                    <li ng-hide="isAuthed()"><a ui-sref=".signIn">Sign In</a></li>
-                    <li ng-show="isAuthed()" class="dropdown"><a ui-sref="home">{{user.name}}</a>
+                    <li ng-hide="isAuthed()"><a ui-sref=".signIn">Sign In </a></li>
+                    <li ng-show="isAuthed()" class="dropdown"><a ui-sref="home">{{user.name}}<span style="color: white;"> ▾ </span></a>
                         <ul class="dropdown-content">
                             <li><a href="#">Account</a></li>
                             <li ng-click="signOut()"><a>Sign Out</a></li>

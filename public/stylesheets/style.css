@@ -161,3 +161,51 @@ button {
     color: red;
     text-align: left;
 }
+
+#descContainer{
+    text-align: center;
+}
+
+.checked {
+    text-align: right;
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.checked > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.checked > span:hover:before,
+.checked > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+   cursor: pointer;
+}
+
+.checked{
+    color: #f44336;
+}
+
+.unchecked {
+    text-align: right;
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.unchecked > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.unchecked > span:hover:before,
+.unchecked > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+   cursor: pointer;
+}
+.unchecked :hover{
+    color: #f44336;
+}
+#desc{
+    padding: 0px 20px 20px 20px;
+}

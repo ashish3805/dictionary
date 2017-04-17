@@ -2,6 +2,11 @@ let User = require('../models/User');
 var constants = require('./constService');
 var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose');
+var Word = require('../models/Word');
+
+function isInArray(value, array) {
+  return array.indexOf(value) > -1;
+}
 
 var userService = {};
 userService.createNew = function (user, callback) {
@@ -88,5 +93,33 @@ userService.removeAll = function (callback) {
         }
     });
 };
+
+userService.checkWord = function (user, wordId, callback) {
+    if (isInArray(wordId,user.words)) {
+        callback({ status: false, message: user });
+        return;
+    }
+    User.findByIdAndUpdate(user._id, { $push: { "words": wordId } }, { new: true }, function (err, existingUser) {
+        if (err) {
+            callback({ status: false, message: err });
+        } else {
+            callback({ status: true, message: existingUser });
+        }
+    });
+}
+
+userService.unCheckWord = function (user, wordId, callback) {
+    if (!isInArray(wordId,user.words)) {
+        callback({ status: false, message: user });
+        return ;
+    }
+    User.findByIdAndUpdate(user._id, { $pop: { "words": wordId } }, { new: true }, function (err, existingUser) {
+        if (err) {
+            callback({ status: false, message: err });
+        } else {
+            callback({ status: true, message: existingUser });
+        }
+    });
+}
 
 module.exports = userService;
